@@ -108,27 +108,45 @@
     .hero-together { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: rgba(232, 226, 216, 0.78); font-size: 1.05rem; margin-bottom: 0.6rem; letter-spacing: 0.04em; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards; }
     .hero-invite { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: rgba(210, 202, 188, 0.72); font-size: 0.98rem; margin-bottom: 2.75rem; letter-spacing: 0.03em; line-height: 1.55; max-width: 38rem; margin-left: auto; margin-right: auto; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s backwards; }
     .hero-names {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-content: center;
+      row-gap: clamp(0.32rem, 1.8vw, 0.6rem);
       margin-bottom: 2rem;
       width: 100%;
+      max-width: 22rem;
+      margin-left: auto;
+      margin-right: auto;
       animation: heroTitles 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards;
     }
-    .hero-name { font-family: var(--font-display); font-size: clamp(2.15rem, 6.5vw, 3.75rem); font-weight: 500; color: #f7f2ea; letter-spacing: 0.14em; text-transform: uppercase; text-shadow: 0 2px 48px rgba(0, 0, 0, 0.5); font-feature-settings: 'kern' 1, 'liga' 1; text-align: center; line-height: 1.08; }
-    /* First name, then “&” directly beneath it, then second name */
-    .hero-name:first-of-type { margin-bottom: 0.05rem; }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.15rem, 6.5vw, 3.75rem);
+      font-weight: 500;
+      color: #f7f2ea;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 48px rgba(0, 0, 0, 0.5);
+      font-feature-settings: 'kern' 1, 'liga' 1;
+      text-align: center;
+      line-height: 1.08;
+      margin: 0;
+      width: 100%;
+    }
+    /* Equal row-gap above & below keeps “&” visually between both names */
     .hero-amp {
       font-family: var(--font-script);
       font-size: clamp(2.75rem, 7.5vw, 4.75rem);
       color: var(--color-gold-bright);
       line-height: 1;
-      padding: 0 0.1em;
+      padding: 0;
+      margin: 0;
       font-weight: 400;
       text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
-      margin-bottom: 0.5rem;
+      display: block;
+      width: 100%;
+      text-align: center;
     }
 
     /* Mobile tweaks */
@@ -136,14 +154,17 @@
       .hero-inner { padding-left: 1.15rem; padding-right: 1.15rem; padding-top: 4.5rem; }
       .hero-together { font-size: 0.98rem; margin-bottom: 0.45rem; }
       .hero-invite { font-size: 0.9rem; margin-bottom: 1.65rem; line-height: 1.5; max-width: 22rem; }
-      .hero-names { margin-bottom: 1.5rem; }
+      .hero-names {
+        margin-bottom: 1.5rem;
+        row-gap: clamp(0.28rem, 1.5vw, 0.45rem);
+        max-width: 18rem;
+      }
       .hero-name {
         font-size: clamp(1.75rem, 8.2vw, 2.45rem);
         letter-spacing: 0.11em;
       }
       .hero-amp {
         font-size: clamp(2rem, 10.5vw, 2.85rem);
-        margin-bottom: 0.4rem;
       }
       .hero-city { margin-bottom: 2rem; }
     }
@@ -433,7 +454,7 @@
     <div id="schedule-list" class="schedule-list"></div>
     <div class="dress-code-box">
       <p id="dress-label" class="dress-code-label">Dress Code</p>
-      <p id="dress-desc" class="dress-code-desc">Formal attire · Garden-party elegance</p>
+      <p id="dress-desc" class="dress-code-desc">Formal attire</p>
     </div>
   </div>
 </section>
