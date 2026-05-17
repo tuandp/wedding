@@ -107,9 +107,46 @@
     .hero-inner { position: relative; z-index: 10; text-align: center; padding: 0 1.5rem; }
     .hero-together { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: rgba(232, 226, 216, 0.78); font-size: 1.05rem; margin-bottom: 0.6rem; letter-spacing: 0.04em; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s backwards; }
     .hero-invite { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: rgba(210, 202, 188, 0.72); font-size: 0.98rem; margin-bottom: 2.75rem; letter-spacing: 0.03em; line-height: 1.55; max-width: 38rem; margin-left: auto; margin-right: auto; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.35s backwards; }
-    .hero-names { display: flex; align-items: baseline; justify-content: center; gap: 1.25rem; margin-bottom: 2rem; flex-wrap: wrap; animation: heroTitles 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards; }
-    .hero-name { font-family: var(--font-display); font-size: clamp(2.15rem, 6.5vw, 3.75rem); font-weight: 500; color: #f7f2ea; letter-spacing: 0.14em; text-transform: uppercase; text-shadow: 0 2px 48px rgba(0, 0, 0, 0.5); font-feature-settings: 'kern' 1, 'liga' 1; }
-    .hero-amp { font-family: var(--font-script); font-size: clamp(2.75rem, 7.5vw, 4.75rem); color: var(--color-gold-bright); line-height: 1; padding: 0 0.1em; font-weight: 400; text-shadow: 0 0 40px rgba(212, 175, 55, 0.2); }
+    .hero-names {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 2rem;
+      width: 100%;
+      animation: heroTitles 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.5s backwards;
+    }
+    .hero-name { font-family: var(--font-display); font-size: clamp(2.15rem, 6.5vw, 3.75rem); font-weight: 500; color: #f7f2ea; letter-spacing: 0.14em; text-transform: uppercase; text-shadow: 0 2px 48px rgba(0, 0, 0, 0.5); font-feature-settings: 'kern' 1, 'liga' 1; text-align: center; line-height: 1.08; }
+    /* First name, then “&” directly beneath it, then second name */
+    .hero-name:first-of-type { margin-bottom: 0.05rem; }
+    .hero-amp {
+      font-family: var(--font-script);
+      font-size: clamp(2.75rem, 7.5vw, 4.75rem);
+      color: var(--color-gold-bright);
+      line-height: 1;
+      padding: 0 0.1em;
+      font-weight: 400;
+      text-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 767px) {
+      .hero-inner { padding-left: 1.15rem; padding-right: 1.15rem; padding-top: 4.5rem; }
+      .hero-together { font-size: 0.98rem; margin-bottom: 0.45rem; }
+      .hero-invite { font-size: 0.9rem; margin-bottom: 1.65rem; line-height: 1.5; max-width: 22rem; }
+      .hero-names { margin-bottom: 1.5rem; }
+      .hero-name {
+        font-size: clamp(1.75rem, 8.2vw, 2.45rem);
+        letter-spacing: 0.11em;
+      }
+      .hero-amp {
+        font-size: clamp(2rem, 10.5vw, 2.85rem);
+        margin-bottom: 0.4rem;
+      }
+      .hero-city { margin-bottom: 2rem; }
+    }
     .hero-date { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: rgba(245, 240, 232, 0.9); margin-bottom: 0.45rem; letter-spacing: 0.32em; text-transform: uppercase; white-space: nowrap; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.65s backwards; }
     .hero-city { font-family: var(--font-ui); font-size: 0.72rem; font-weight: 500; color: rgba(200, 192, 178, 0.85); letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 2.75rem; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.75s backwards; }
     .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem 0.35rem; max-width: 26rem; margin: 0 auto 2rem; padding: 1.25rem 0.75rem; border: 1px solid rgba(212, 175, 55, 0.22); background: rgba(10, 9, 8, 0.35); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 0.25rem; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.85s backwards; }
@@ -130,7 +167,6 @@
     @media (min-width: 768px) {
       .hero-together { font-size: 1.2rem; }
       .hero-invite { font-size: 1.1rem; max-width: 42rem; }
-      .hero-names { gap: 2rem; }
       .hero-date { font-size: 1.15rem; letter-spacing: 0.36em; }
       .countdown { gap: 0.85rem 1rem; padding: 1.5rem 1.25rem; max-width: 30rem; }
       .cd-num { font-size: 2.1rem; }
