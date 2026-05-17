@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuân & Huyền · 04.07.2026</title>
+  <meta name="description" content="Join us in celebrating the wedding of Tuân & Huyền on July 4, 2026 in Ho Chi Minh City." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%95%3C/text%3E%3C/svg%3E" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #fdfaf6; color: #292524; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    input, textarea { font-family: inherit; font-size: 1rem; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== Typography ===== */
+    .serif { font-family: 'Cormorant Garamond', serif; }
+    .script { font-family: 'Dancing Script', cursive; }
+
+    /* ===== Animations ===== */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes bounceSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    @keyframes shimmer { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+    .fade-up { animation: fadeUp 1s ease-out forwards; }
+    .fade-in { animation: fadeIn 1.5s ease-out forwards; }
+    .bounce-slow { animation: bounceSlow 2s ease-in-out infinite; }
+    .shimmer { animation: shimmer 3s ease-in-out infinite; }
+    .ornament { background: linear-gradient(90deg, transparent, #b8860b, transparent); height: 1px; width: 8rem; margin: 0 auto; }
+    .ornament-sm { width: 6rem; }
+
+    /* ===== Layout ===== */
+    .container { max-width: 1152px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+    .container-narrow { max-width: 672px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+    .container-med { max-width: 896px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; }
+
+    /* ===== Navigation ===== */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: all 0.5s ease; padding: 1.25rem 0; background: transparent; }
+    .navbar.scrolled { background: rgba(250, 250, 249, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); padding: 0.75rem 0; }
+    .nav-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-monogram { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; letter-spacing: 0.05em; color: #44403c; }
+    .nav-monogram .amp { font-family: 'Dancing Script', cursive; color: #be123c; margin: 0 0.25rem; }
+    .nav-links { display: none; align-items: center; gap: 2rem; }
+    .nav-link { font-size: 0.875rem; letter-spacing: 0.1em; text-transform: uppercase; color: #292524; transition: color 0.2s; }
+    .nav-link:hover { color: #be123c; }
+    .lang-switcher { display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem; padding-left: 1rem; border-left: 1px solid #d6d3d1; }
+    .lang-btn { font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.5rem; border-radius: 0.25rem; transition: all 0.2s; color: #57534e; }
+    .lang-btn:hover { color: #292524; }
+    .lang-btn.active { background: #292524; color: #fafaf9; }
+    .menu-toggle { display: block; color: #292524; padding: 0.25rem; }
+    .mobile-menu { display: none; background: #fafaf9; border-top: 1px solid #e7e5e4; padding: 1rem 1.5rem; }
+    .mobile-menu.open { display: block; animation: fadeIn 0.3s ease-out; }
+    .mobile-link { display: block; padding: 0.5rem 0; color: #44403c; letter-spacing: 0.025em; }
+    .mobile-lang-row { display: flex; gap: 0.5rem; padding-top: 0.5rem; margin-top: 0.5rem; border-top: 1px solid #e7e5e4; }
+    .lang-btn-mobile { font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 0.25rem; background: #e7e5e4; color: #44403c; }
+    .lang-btn-mobile.active { background: #292524; color: #fafaf9; }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .menu-toggle { display: none; }
+      .mobile-menu { display: none !important; }
+    }
+
+    /* ===== Hero ===== */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #faf3ec 0%, #f5e6d3 50%, #ead4c0 100%); }
+    .hero-blob-1 { position: absolute; top: 5rem; left: 2.5rem; width: 16rem; height: 16rem; border-radius: 9999px; opacity: 0.2; filter: blur(64px); background: #d4a574; }
+    .hero-blob-2 { position: absolute; bottom: 5rem; right: 2.5rem; width: 20rem; height: 20rem; border-radius: 9999px; opacity: 0.2; filter: blur(64px); background: #c97b63; }
+    .hero-inner { position: relative; z-index: 10; text-align: center; padding: 0 1.5rem; }
+    .hero-together { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #57534e; font-size: 1.125rem; margin-bottom: 0.5rem; letter-spacing: 0.025em; }
+    .hero-invite { font-family: 'Cormorant Garamond', serif; font-style: italic; color: #57534e; font-size: 1rem; margin-bottom: 2.5rem; letter-spacing: 0.025em; max-width: 42rem; margin-left: auto; margin-right: auto; }
+    .hero-names { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
+    .hero-name { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: #292524; letter-spacing: 0.05em; }
+    .hero-amp { font-family: 'Dancing Script', cursive; font-size: 3rem; color: #be123c; }
+    .hero-date { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: #44403c; margin-bottom: 0.5rem; letter-spacing: 0.1em; }
+    .hero-city { font-size: 0.875rem; color: #57534e; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3rem; }
+    .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; max-width: 28rem; margin: 0 auto 2rem; }
+    .cd-cell { text-align: center; }
+    .cd-num { font-family: 'Cormorant Garamond', serif; font-size: 1.875rem; font-weight: 300; color: #292524; margin-bottom: 0.25rem; }
+    .cd-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #57534e; }
+    .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); text-align: center; }
+    .scroll-hint p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #57534e; margin-bottom: 0.5rem; }
+    .scroll-hint svg { margin: 0 auto; color: #57534e; }
+
+    @media (min-width: 768px) {
+      .hero-together { font-size: 1.25rem; }
+      .hero-invite { font-size: 1.125rem; }
+      .hero-names { gap: 3rem; margin-bottom: 2rem; }
+      .hero-name, .hero-amp { font-size: 4.5rem; }
+      .hero-date { font-size: 1.5rem; }
+      .countdown { gap: 1.5rem; }
+      .cd-num { font-size: 3rem; }
+    }
+
+    /* ===== Sections ===== */
+    section { padding: 6rem 1.5rem; }
+    .section-bg-warm { background: #f5ebe0; position: relative; }
+    .section-head { text-align: center; margin-bottom: 3rem; }
+    .section-script { font-family: 'Dancing Script', cursive; font-size: 1.875rem; color: #be123c; margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 2.25rem; font-weight: 300; color: #292524; margin-bottom: 1rem; }
+
+    @media (min-width: 768px) {
+      .section-title { font-size: 3rem; }
+    }
+
+    /* ===== Our Story ===== */
+    .story-body { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 300; color: #44403c; line-height: 1.7; font-style: italic; margin-top: 2rem; }
+
+    @media (min-width: 768px) {
+      .story-body { font-size: 1.5rem; }
+    }
+
+    /* ===== Schedule ===== */
+    .schedule-list { margin-top: 4rem; }
+    .schedule-row { display: grid; grid-template-columns: 25% 1fr; gap: 1rem; align-items: center; padding: 1.5rem 1rem; border-bottom: 1px solid rgba(214, 211, 209, 0.5); border-radius: 0.5rem; transition: background 0.2s; }
+    .schedule-row:hover { background: rgba(250, 250, 249, 0.5); }
+    .schedule-time { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #be123c; font-weight: 300; }
+    .schedule-event-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: #292524; margin-bottom: 0.25rem; }
+    .schedule-event-desc { font-size: 0.875rem; color: #57534e; }
+    .schedule-date { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: #44403c; letter-spacing: 0.025em; margin-top: 1rem; }
+    .dress-code-box { margin-top: 3rem; max-width: 28rem; margin-left: auto; margin-right: auto; text-align: center; background: rgba(255, 255, 255, 0.5); border-radius: 0.5rem; padding: 1.5rem 2rem; border: 1px solid #e7e5e4; }
+    .dress-code-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #57534e; margin-bottom: 0.5rem; }
+    .dress-code-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.125rem; color: #292524; }
+
+    @media (min-width: 768px) {
+      .schedule-row { grid-template-columns: 16.66% 1fr; gap: 2rem; }
+      .schedule-time { font-size: 1.875rem; }
+      .schedule-event-title { font-size: 1.5rem; }
+      .schedule-date { font-size: 1.25rem; }
+    }
+
+    /* ===== Venue ===== */
+    .venue-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    .venue-info > * + * { margin-top: 1.5rem; }
+    .venue-name { font-family: 'Cormorant Garamond', serif; font-size: 1.875rem; color: #292524; margin-bottom: 0.5rem; }
+    .venue-hall { font-size: 0.875rem; color: #be123c; font-style: italic; letter-spacing: 0.025em; margin-bottom: 0.75rem; }
+    .venue-address-row { display: flex; align-items: flex-start; gap: 0.5rem; color: #57534e; }
+    .venue-address-row svg { margin-top: 0.25rem; flex-shrink: 0; }
+    .btn-directions { display: inline-flex; align-items: center; gap: 0.5rem; background: #292524; color: #fafaf9; padding: 0.75rem 1.5rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; transition: background 0.2s; }
+    .btn-directions:hover { background: #9f1239; }
+    .travel-note { background: #fff1f2; border-left: 4px solid #be123c; padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; }
+    .travel-note p { font-size: 0.875rem; color: #44403c; font-style: italic; }
+    .map-frame { border-radius: 0.5rem; overflow: hidden; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); height: 20rem; background: #e7e5e4; }
+    .map-frame iframe { width: 100%; height: 100%; border: 0; }
+
+    @media (min-width: 768px) {
+      .venue-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    /* ===== Gallery ===== */
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .gallery-tile { aspect-ratio: 1; border-radius: 0.5rem; overflow: hidden; position: relative; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: box-shadow 0.3s, transform 0.3s; display: flex; align-items: center; justify-content: center; }
+    .gallery-tile:hover { box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15); transform: translateY(-2px); }
+    .gallery-tile-num { font-family: 'Cormorant Garamond', serif; font-size: 3.75rem; color: rgba(255, 255, 255, 0.3); }
+    .gallery-note { text-align: center; font-size: 0.75rem; color: #78716c; margin-top: 1.5rem; font-style: italic; }
+
+    @media (min-width: 768px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ===== RSVP ===== */
+    .rsvp-card { background: white; border-radius: 1rem; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05); padding: 2rem; border: 1px solid #f5f5f4; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: #57534e; margin-bottom: 0.5rem; }
+    .form-input { width: 100%; padding: 0.75rem 1rem; border: none; border-bottom: 2px solid #e7e5e4; background: transparent; outline: none; transition: border-color 0.2s; color: #292524; }
+    .form-input:focus { border-bottom-color: #be123c; }
+    .form-textarea { width: 100%; padding: 0.75rem 1rem; border: 2px solid #e7e5e4; border-radius: 0.5rem; background: transparent; outline: none; transition: border-color 0.2s; resize: none; color: #292524; }
+    .form-textarea:focus { border-color: #be123c; }
+
+    .attending-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .att-btn { padding: 1rem; border-radius: 0.5rem; border: 2px solid #e7e5e4; color: #57534e; font-family: 'Cormorant Garamond', serif; font-size: 1.125rem; transition: all 0.2s; background: transparent; }
+    .att-btn:hover { border-color: #a8a29e; }
+    .att-btn.active-yes { border-color: #be123c; background: #fff1f2; color: #881337; }
+    .att-btn.active-no { border-color: #44403c; background: #f5f5f4; color: #1c1917; }
+
+    .guest-row { display: flex; align-items: center; gap: 1rem; }
+    .guest-btn { width: 2.5rem; height: 2.5rem; border-radius: 9999px; border: 1px solid #d6d3d1; color: #44403c; transition: all 0.2s; font-size: 1.125rem; display: flex; align-items: center; justify-content: center; }
+    .guest-btn:hover { border-color: #be123c; color: #be123c; }
+    .guest-count-wrap { flex: 1; text-align: center; }
+    .guest-count { font-family: 'Cormorant Garamond', serif; font-size: 1.875rem; color: #292524; }
+    .guest-icon { display: inline-block; margin-left: 0.5rem; color: #78716c; vertical-align: middle; }
+
+    .meal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .meal-btn { padding: 0.5rem 0.75rem; border-radius: 0.25rem; font-size: 0.875rem; background: #f5f5f4; color: #44403c; transition: all 0.2s; }
+    .meal-btn:hover { background: #e7e5e4; }
+    .meal-btn.active { background: #292524; color: #fafaf9; }
+
+    .submit-btn { width: 100%; background: #292524; color: #fafaf9; padding: 1rem; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: all 0.2s; }
+    .submit-btn:hover:not(:disabled) { background: #9f1239; }
+    .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .rsvp-success { background: linear-gradient(135deg, #fff1f2 0%, #fafaf9 100%); border-radius: 1rem; padding: 3rem; text-align: center; border: 1px solid #fecdd3; animation: fadeUp 0.6s ease-out forwards; }
+    .success-icon { width: 4rem; height: 4rem; border-radius: 9999px; background: #be123c; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; }
+    .success-title { font-family: 'Cormorant Garamond', serif; font-size: 1.875rem; color: #292524; margin-bottom: 0.75rem; }
+    .success-desc { color: #57534e; margin-bottom: 2rem; }
+    .reset-btn { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.1em; color: #be123c; transition: color 0.2s; }
+    .reset-btn:hover { color: #881337; text-decoration: underline; text-underline-offset: 4px; }
+
+    .rsvp-deadline { color: #57534e; font-style: italic; }
+    .section-head-rsvp { margin-bottom: 3rem; }
+
+    @media (min-width: 768px) {
+      .rsvp-card { padding: 2.5rem; }
+    }
+
+    /* ===== Footer ===== */
+    footer { padding: 4rem 1.5rem; text-align: center; background: #2d2520; color: #e8d9c4; }
+    .footer-heart { margin: 0 auto 1.5rem; color: #fb7185; }
+    .footer-thanks { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .footer-names { display: flex; align-items: center; justify-content: center; gap: 1.5rem; margin: 2rem 0; }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.875rem; font-weight: 300; letter-spacing: 0.05em; }
+    .footer-amp { font-family: 'Dancing Script', cursive; font-size: 1.875rem; color: #fb7185; }
+    .footer-contact-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; margin-bottom: 0.5rem; }
+    .footer-email { font-size: 0.875rem; opacity: 0.8; }
+    .footer-date { font-size: 0.75rem; opacity: 0.4; margin-top: 1rem; }
+    .footer-ornament { margin-top: 2rem; opacity: 0.3; }
+
+    @media (min-width: 768px) {
+      .footer-names { gap: 3rem; }
+      .footer-name, .footer-amp { font-size: 2.25rem; }
+    }
+
+    /* ===== Utility ===== */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar" class="navbar">
+  <div class="nav-inner">
+    <div class="nav-monogram">T <span class="amp">&</span> H</div>
+    <div class="nav-links">
+      <a href="#story" class="nav-link" data-key="story">Our Story</a>
+      <a href="#schedule" class="nav-link" data-key="schedule">Schedule</a>
+      <a href="#venue" class="nav-link" data-key="venue">Venue</a>
+      <a href="#gallery" class="nav-link" data-key="gallery">Gallery</a>
+      <a href="#rsvp" class="nav-link" data-key="rsvp">RSVP</a>
+      <div class="lang-switcher">
+        <button data-lang="en" class="lang-btn active">EN</button>
+        <button data-lang="vi" class="lang-btn">VI</button>
+      </div>
+    </div>
+    <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
+      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#story" class="mobile-link" data-key="story">Our Story</a>
+    <a href="#schedule" class="mobile-link" data-key="schedule">Schedule</a>
+    <a href="#venue" class="mobile-link" data-key="venue">Venue</a>
+    <a href="#gallery" class="mobile-link" data-key="gallery">Gallery</a>
+    <a href="#rsvp" class="mobile-link" data-key="rsvp">RSVP</a>
+    <div class="mobile-lang-row">
+      <button data-lang="en" class="lang-btn-mobile active">EN</button>
+      <button data-lang="vi" class="lang-btn-mobile">VI</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-blob-1"></div>
+  <div class="hero-blob-2"></div>
+
+  <div class="hero-inner fade-up">
+    <p id="hero-together" class="hero-together">Together with their families</p>
+    <p id="hero-invite" class="hero-invite">request the pleasure of your company at the celebration of their wedding</p>
+
+    <div class="hero-names">
+      <h1 class="hero-name">Tuân</h1>
+      <span class="hero-amp">&</span>
+      <h1 class="hero-name">Huyền</h1>
+    </div>
+
+    <div class="ornament" style="margin-bottom: 2rem;"></div>
+
+    <p class="hero-date">04 · 07 · 2026</p>
+    <p class="hero-city">Ho Chi Minh City</p>
+
+    <div class="countdown">
+      <div class="cd-cell">
+        <div id="cd-days" class="cd-num">00</div>
+        <div class="cd-label cd-translate" data-key="days">Days</div>
+      </div>
+      <div class="cd-cell">
+        <div id="cd-hours" class="cd-num">00</div>
+        <div class="cd-label cd-translate" data-key="hours">Hours</div>
+      </div>
+      <div class="cd-cell">
+        <div id="cd-mins" class="cd-num">00</div>
+        <div class="cd-label cd-translate" data-key="minutes">Minutes</div>
+      </div>
+      <div class="cd-cell">
+        <div id="cd-secs" class="cd-num">00</div>
+        <div class="cd-label cd-translate" data-key="seconds">Seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint bounce-slow">
+    <p id="hero-scroll">Scroll to explore</p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- Our Story -->
+<section id="story">
+  <div class="container-narrow" style="text-align: center;">
+    <p id="story-sub" class="section-script">How it all began</p>
+    <h2 id="story-title" class="section-title">Our Story</h2>
+    <div class="ornament ornament-sm" style="margin-bottom: 2rem;"></div>
+    <p id="story-body" class="story-body">From a chance encounter to a lifetime promise — every moment has led us here. We can't wait to share this day with the people we love most.</p>
+  </div>
+</section>
+
+<!-- Schedule -->
+<section id="schedule" class="section-bg-warm">
+  <div class="container-med">
+    <div class="section-head">
+      <p id="sched-sub" class="section-script">The Wedding Celebration</p>
+      <h2 id="sched-title" class="section-title">Lễ Cưới</h2>
+      <div class="ornament ornament-sm" style="margin-bottom: 1.5rem;"></div>
+      <p id="sched-date" class="schedule-date">Saturday, July 4, 2026</p>
+    </div>
+    <div id="schedule-list" class="schedule-list"></div>
+    <div class="dress-code-box">
+      <p id="dress-label" class="dress-code-label">Dress Code</p>
+      <p id="dress-desc" class="dress-code-desc">Formal attire · Garden-party elegance</p>
+    </div>
+  </div>
+</section>
+
+<!-- Venue -->
+<section id="venue">
+  <div class="container">
+    <div class="section-head">
+      <p id="venue-sub" class="section-script">Where we'll celebrate</p>
+      <h2 id="venue-title" class="section-title">The Venue</h2>
+      <div class="ornament ornament-sm"></div>
+    </div>
+    <div class="venue-grid">
+      <div class="venue-info">
+        <div>
+          <h3 id="venue-name" class="venue-name">Tân Sơn Nhất Pavillon</h3>
+          <p id="venue-hall" class="venue-hall">Grand Diamond Hall · 4th Floor</p>
+          <div class="venue-address-row">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p id="venue-address">202 Hoàng Văn Thụ, Đức Nhuận Ward, Ho Chi Minh City</p>
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Tan+Son+Nhat+Pavillon+202+Hoang+Van+Thu+Ho+Chi+Minh" target="_blank" rel="noopener noreferrer" class="btn-directions">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="directions-label">Get Directions</span>
+        </a>
+        <div class="travel-note">
+          <p id="travel-note">Traveling from Singapore? We've arranged group transport — details to follow after RSVP.</p>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe title="Wedding venue map" src="https://www.google.com/maps?q=202+Hoang+Van+Thu,+Phu+Nhuan,+Ho+Chi+Minh+City&output=embed" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="section-bg-warm">
+  <div class="container">
+    <div class="section-head">
+      <p id="gallery-sub" class="section-script">A glimpse of our journey</p>
+      <h2 id="gallery-title" class="section-title">Moments</h2>
+      <div class="ornament ornament-sm"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-tile" style="background: linear-gradient(135deg, #e8c4a8 0%, #c97b63 100%);"><div class="gallery-tile-num">01</div></div>
+      <div class="gallery-tile" style="background: linear-gradient(135deg, #d4a574 0%, #a67c52 100%);"><div class="gallery-tile-num">02</div></div>
+      <div class="gallery-tile" style="background: linear-gradient(135deg, #e8b4b8 0%, #c97b8a 100%);"><div class="gallery-tile-num">03</div></div>
+      <div class="gallery-tile" style="background: linear-gradient(135deg, #c9a87c 0%, #8b6f47 100%);"><div class="gallery-tile-num">04</div></div>
+      <div class="gallery-tile" style="background: linear-gradient(135deg, #e8c4a8 0%, #a67c52 100%);"><div class="gallery-tile-num">05</div></div>
+      <div class="gallery-tile" style="background: linear-gradient(135deg, #d4a8a8 0%, #8b5a5a 100%);"><div class="gallery-tile-num">06</div></div>
+    </div>
+    <p id="gallery-note" class="gallery-note">Photos coming soon</p>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <div class="container-narrow">
+    <div class="section-head section-head-rsvp">
+      <p id="rsvp-sub-script" class="section-script">Kindly Reply</p>
+      <h2 id="rsvp-title" class="section-title">RSVP</h2>
+      <div class="ornament ornament-sm" style="margin-bottom: 1rem;"></div>
+      <p id="rsvp-subtitle" class="rsvp-deadline">Kindly respond by June 20, 2026</p>
+    </div>
+
+    <div id="rsvp-form-wrap" class="rsvp-card">
+      <div class="form-group">
+        <label id="lbl-name" class="form-label">Full Name</label>
+        <input type="text" id="f-name" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label id="lbl-email" class="form-label">Email</label>
+        <input type="email" id="f-email" class="form-input" />
+      </div>
+      <div class="form-group">
+        <label id="lbl-attending" class="form-label">Will you attend?</label>
+        <div class="attending-grid">
+          <button id="btn-yes" type="button" class="att-btn active-yes">Joyfully accepts</button>
+          <button id="btn-no" type="button" class="att-btn">Regretfully declines</button>
+        </div>
+      </div>
+
+      <div id="yes-fields">
+        <div class="form-group">
+          <label id="lbl-guests" class="form-label">Number of guests (including yourself)</label>
+          <div class="guest-row">
+            <button type="button" id="g-minus" class="guest-btn">−</button>
+            <div class="guest-count-wrap">
+              <span id="guest-count" class="guest-count">1</span>
+              <svg class="guest-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <button type="button" id="g-plus" class="guest-btn">+</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label id="lbl-meal" class="form-label">Meal preference</label>
+          <div id="meal-options" class="meal-grid"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label id="lbl-message" class="form-label">A message for the couple (optional)</label>
+        <textarea id="f-message" rows="3" class="form-textarea"></textarea>
+      </div>
+
+      <button id="submit-btn" type="button" class="submit-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <span id="submit-label">Send RSVP</span>
+      </button>
+    </div>
+
+    <div id="rsvp-success" class="rsvp-success hidden">
+      <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 id="succ-title" class="success-title">Thank you! Your RSVP has been received.</h3>
+      <p id="succ-desc" class="success-desc">We can't wait to celebrate with you.</p>
+      <button id="reset-btn" type="button" class="reset-btn">Submit another response</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <svg class="footer-heart shimmer" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+  <p id="footer-thanks" class="footer-thanks">With love and gratitude</p>
+  <div class="footer-names">
+    <h3 class="footer-name">Tuân</h3>
+    <span class="footer-amp">&</span>
+    <h3 class="footer-name">Huyền</h3>
+  </div>
+  <p id="footer-contact" class="footer-contact-label">Questions? Reach out:</p>
+  <p class="footer-email">hello@tuanandhuyen.com</p>
+  <div class="ornament footer-ornament"></div>
+  <p class="footer-date">04 · 07 · 2026 · Ho Chi Minh City</p>
+</footer>
+
+<script>
+  // ===== Translations =====
+  const translations = {
+    en: {
+      nav: { story: 'Our Story', schedule: 'Schedule', venue: 'Venue', gallery: 'Gallery', rsvp: 'RSVP' },
+      hero: {
+        together: 'Together with their families',
+        invite: 'request the pleasure of your company at the celebration of their wedding',
+        scroll: 'Scroll to explore',
+        countdown: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' },
+      },
+      story: {
+        title: 'Our Story',
+        subtitle: 'How it all began',
+        body: 'From a chance encounter to a lifetime promise — every moment has led us here. We can\'t wait to share this day with the people we love most.',
+      },
+      schedule: {
+        title: 'Lễ Cưới',
+        subtitle: 'The Wedding Celebration',
+        date: 'Saturday, July 4, 2026',
+        dressCode: 'Dress Code',
+        dressCodeDesc: 'Formal attire · Garden-party elegance',
+        events: [
+          { time: '8:00 AM', title: 'Lễ Gia Tiên', desc: 'Traditional family ancestral ceremony' },
+          { time: '6:00 PM', title: 'Welcome Reception', desc: 'Guest arrival & cocktails' },
+          { time: '7:00 PM', title: 'Wedding Banquet', desc: 'Dinner & ceremony begin' },
+          { time: '9:00 PM', title: 'Celebration', desc: 'Music, toasts & joy' },
+        ],
+      },
+      venue: {
+        title: 'The Venue',
+        subtitle: 'Where we\'ll celebrate',
+        name: 'Tân Sơn Nhất Pavillon',
+        hall: 'Grand Diamond Hall · 4th Floor',
+        address: '202 Hoàng Văn Thụ, Đức Nhuận Ward, Ho Chi Minh City',
+        directions: 'Get Directions',
+        travelNote: 'Traveling from Singapore? We\'ve arranged group transport — details to follow after RSVP.',
+      },
+      gallery: { title: 'Moments', subtitle: 'A glimpse of our journey', note: 'Photos coming soon' },
+      rsvp: {
+        title: 'RSVP',
+        scriptLabel: 'Kindly Reply',
+        subtitle: 'Kindly respond by June 20, 2026',
+        name: 'Full Name',
+        email: 'Email',
+        attending: 'Will you attend?',
+        yes: 'Joyfully accepts',
+        no: 'Regretfully declines',
+        guests: 'Number of guests (including yourself)',
+        meal: 'Meal preference',
+        mealOptions: ['No preference', 'Vegetarian', 'Seafood', 'Halal'],
+        message: 'A message for the couple (optional)',
+        submit: 'Send RSVP',
+        success: 'Thank you! Your RSVP has been received.',
+        successDesc: 'We can\'t wait to celebrate with you.',
+        another: 'Submit another response',
+      },
+      footer: { thanks: 'With love and gratitude', contact: 'Questions? Reach out:' },
+    },
+    vi: {
+      nav: { story: 'Câu Chuyện', schedule: 'Chương Trình', venue: 'Địa Điểm', gallery: 'Album', rsvp: 'Xác Nhận' },
+      hero: {
+        together: 'Cùng gia đình hai bên',
+        invite: 'trân trọng kính mời quý khách đến chung vui trong ngày lễ thành hôn',
+        scroll: 'Cuộn xuống',
+        countdown: { days: 'Ngày', hours: 'Giờ', minutes: 'Phút', seconds: 'Giây' },
+      },
+      story: {
+        title: 'Câu Chuyện Của Chúng Mình',
+        subtitle: 'Tất cả bắt đầu thế nào',
+        body: 'Từ một cuộc gặp gỡ tình cờ đến lời hứa trọn đời — mỗi khoảnh khắc đã dẫn chúng mình đến đây. Chúng mình rất mong được chia sẻ ngày trọng đại này cùng những người thân yêu nhất.',
+      },
+      schedule: {
+        title: 'Lễ Cưới',
+        subtitle: 'Tiệc cưới chính thức',
+        date: 'Thứ Bảy, ngày 04 tháng 07 năm 2026',
+        dressCode: 'Trang Phục',
+        dressCodeDesc: 'Trang trọng · Lịch sự thanh lịch',
+        events: [
+          { time: '08:00', title: 'Lễ Gia Tiên', desc: 'Nghi lễ truyền thống tại gia' },
+          { time: '18:00', title: 'Đón Khách', desc: 'Quý khách đến và dùng tiệc nhẹ' },
+          { time: '19:00', title: 'Khai Tiệc', desc: 'Tiệc cưới chính thức bắt đầu' },
+          { time: '21:00', title: 'Chung Vui', desc: 'Âm nhạc, nâng ly & niềm vui' },
+        ],
+      },
+      venue: {
+        title: 'Địa Điểm',
+        subtitle: 'Nơi chúng mình chung vui',
+        name: 'Trung Tâm Tiệc Cưới Tân Sơn Nhất Pavillon',
+        hall: 'Sảnh Grand Diamond · Tầng 4',
+        address: '202 Hoàng Văn Thụ, Phường Đức Nhuận, TP. Hồ Chí Minh',
+        directions: 'Chỉ Đường',
+        travelNote: 'Đến từ Singapore? Chúng mình đã sắp xếp xe đưa đón theo nhóm — chi tiết sẽ gửi sau khi xác nhận.',
+      },
+      gallery: { title: 'Khoảnh Khắc', subtitle: 'Một chút hành trình của chúng mình', note: 'Hình ảnh sẽ được cập nhật' },
+      rsvp: {
+        title: 'Xác Nhận Tham Dự',
+        scriptLabel: 'Vui Lòng Phản Hồi',
+        subtitle: 'Vui lòng phản hồi trước ngày 20/06/2026',
+        name: 'Họ và Tên',
+        email: 'Email',
+        attending: 'Anh/Chị có tham dự không?',
+        yes: 'Vui lòng nhận lời',
+        no: 'Rất tiếc không thể tham dự',
+        guests: 'Số người tham dự (bao gồm bạn)',
+        meal: 'Khẩu phần ăn',
+        mealOptions: ['Không yêu cầu', 'Chay', 'Hải sản', 'Halal'],
+        message: 'Lời nhắn cho cô dâu chú rể (tùy chọn)',
+        submit: 'Gửi Xác Nhận',
+        success: 'Cảm ơn bạn! Đã nhận được xác nhận.',
+        successDesc: 'Chúng mình rất mong gặp bạn trong ngày trọng đại.',
+        another: 'Gửi phản hồi khác',
+      },
+      footer: { thanks: 'Với tất cả yêu thương và lòng biết ơn', contact: 'Mọi thắc mắc xin liên hệ:' },
+    },
+  };
+
+  const state = { lang: 'en', attending: 'yes', guests: 1, meal: 0 };
+  const WEDDING_DATE = new Date('2026-07-04T18:00:00+07:00');
+
+  // ===== Apply language =====
+  function applyLang() {
+    const t = translations[state.lang];
+
+    document.querySelectorAll('.nav-link, .mobile-link').forEach(el => {
+      const key = el.dataset.key;
+      if (t.nav[key]) el.textContent = t.nav[key];
+    });
+
+    document.getElementById('hero-together').textContent = t.hero.together;
+    document.getElementById('hero-invite').textContent = t.hero.invite;
+    document.getElementById('hero-scroll').textContent = t.hero.scroll;
+    document.querySelectorAll('.cd-translate').forEach(el => {
+      el.textContent = t.hero.countdown[el.dataset.key];
+    });
+
+    document.getElementById('story-title').textContent = t.story.title;
+    document.getElementById('story-sub').textContent = t.story.subtitle;
+    document.getElementById('story-body').textContent = t.story.body;
+
+    document.getElementById('sched-title').textContent = t.schedule.title;
+    document.getElementById('sched-sub').textContent = t.schedule.subtitle;
+    document.getElementById('sched-date').textContent = t.schedule.date;
+    document.getElementById('dress-label').textContent = t.schedule.dressCode;
+    document.getElementById('dress-desc').textContent = t.schedule.dressCodeDesc;
+    document.getElementById('schedule-list').innerHTML = t.schedule.events.map(e => `
+      <div class="schedule-row">
+        <div class="schedule-time">${e.time}</div>
+        <div>
+          <div class="schedule-event-title">${e.title}</div>
+          <div class="schedule-event-desc">${e.desc}</div>
+        </div>
+      </div>
+    `).join('');
+
+    document.getElementById('venue-title').textContent = t.venue.title;
+    document.getElementById('venue-sub').textContent = t.venue.subtitle;
+    document.getElementById('venue-name').textContent = t.venue.name;
+    document.getElementById('venue-hall').textContent = t.venue.hall;
+    document.getElementById('venue-address').textContent = t.venue.address;
+    document.getElementById('directions-label').textContent = t.venue.directions;
+    document.getElementById('travel-note').textContent = t.venue.travelNote;
+
+    document.getElementById('gallery-title').textContent = t.gallery.title;
+    document.getElementById('gallery-sub').textContent = t.gallery.subtitle;
+    document.getElementById('gallery-note').textContent = t.gallery.note;
+
+    document.getElementById('rsvp-title').textContent = t.rsvp.title;
+    document.getElementById('rsvp-sub-script').textContent = t.rsvp.scriptLabel;
+    document.getElementById('rsvp-subtitle').textContent = t.rsvp.subtitle;
+    document.getElementById('lbl-name').textContent = t.rsvp.name;
+    document.getElementById('lbl-email').textContent = t.rsvp.email;
+    document.getElementById('lbl-attending').textContent = t.rsvp.attending;
+    document.getElementById('btn-yes').textContent = t.rsvp.yes;
+    document.getElementById('btn-no').textContent = t.rsvp.no;
+    document.getElementById('lbl-guests').textContent = t.rsvp.guests;
+    document.getElementById('lbl-meal').textContent = t.rsvp.meal;
+    document.getElementById('lbl-message').textContent = t.rsvp.message;
+    document.getElementById('submit-label').textContent = t.rsvp.submit;
+    document.getElementById('succ-title').textContent = t.rsvp.success;
+    document.getElementById('succ-desc').textContent = t.rsvp.successDesc;
+    document.getElementById('reset-btn').textContent = t.rsvp.another;
+
+    const mealWrap = document.getElementById('meal-options');
+    mealWrap.innerHTML = t.rsvp.mealOptions.map((opt, i) => `
+      <button type="button" data-meal="${i}" class="meal-btn ${state.meal === i ? 'active' : ''}">${opt}</button>
+    `).join('');
+    mealWrap.querySelectorAll('.meal-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.meal = parseInt(btn.dataset.meal);
+        applyLang();
+      });
+    });
+
+    document.getElementById('footer-thanks').textContent = t.footer.thanks;
+    document.getElementById('footer-contact').textContent = t.footer.contact;
+
+    document.documentElement.lang = state.lang;
+  }
+
+  // ===== Language buttons =====
+  document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.lang = btn.dataset.lang;
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === state.lang);
+      });
+      document.querySelectorAll('.lang-btn-mobile').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === state.lang);
+      });
+      applyLang();
+    });
+  });
+
+  // ===== Mobile menu =====
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    iconOpen.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+
+  // ===== Navbar scroll =====
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ===== Countdown =====
+  function tick() {
+    const diff = WEDDING_DATE.getTime() - Date.now();
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00');
+      return;
+    }
+    document.getElementById('cd-days').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
+    document.getElementById('cd-hours').textContent = String(Math.floor((diff / 3600000) % 24)).padStart(2, '0');
+    document.getElementById('cd-mins').textContent = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
+    document.getElementById('cd-secs').textContent = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ===== RSVP attending toggle =====
+  const btnYes = document.getElementById('btn-yes');
+  const btnNo = document.getElementById('btn-no');
+  const yesFields = document.getElementById('yes-fields');
+  function setAttending(val) {
+    state.attending = val;
+    btnYes.classList.toggle('active-yes', val === 'yes');
+    btnNo.classList.toggle('active-no', val === 'no');
+    yesFields.style.display = val === 'yes' ? '' : 'none';
+  }
+  btnYes.addEventListener('click', () => setAttending('yes'));
+  btnNo.addEventListener('click', () => setAttending('no'));
+
+  // ===== Guest counter =====
+  document.getElementById('g-plus').addEventListener('click', () => {
+    state.guests = Math.min(10, state.guests + 1);
+    document.getElementById('guest-count').textContent = state.guests;
+  });
+  document.getElementById('g-minus').addEventListener('click', () => {
+    state.guests = Math.max(1, state.guests - 1);
+    document.getElementById('guest-count').textContent = state.guests;
+  });
+
+  // ===== Submit =====
+  const submitBtn = document.getElementById('submit-btn');
+  const formWrap = document.getElementById('rsvp-form-wrap');
+  const successWrap = document.getElementById('rsvp-success');
+
+  submitBtn.addEventListener('click', () => {
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    if (!name || !email) {
+      alert(state.lang === 'vi' ? 'Vui lòng điền họ tên và email.' : 'Please enter your name and email.');
+      return;
+    }
+    const t = translations[state.lang];
+    const submission = {
+      name, email,
+      attending: state.attending,
+      guests: state.attending === 'yes' ? state.guests : 0,
+      meal: state.attending === 'yes' ? t.rsvp.mealOptions[state.meal] : null,
+      message: document.getElementById('f-message').value.trim(),
+      timestamp: new Date().toISOString(),
+    };
+
+    // ⚠️ TODO: Replace this console.log with a fetch() call to Formspree
+    // Example once you have the endpoint:
+    // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    //   body: JSON.stringify(submission)
+    // });
+    console.log('RSVP submission:', submission);
+
+    formWrap.classList.add('hidden');
+    successWrap.classList.remove('hidden');
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    document.getElementById('f-name').value = '';
+    document.getElementById('f-email').value = '';
+    document.getElementById('f-message').value = '';
+    state.guests = 1;
+    state.meal = 0;
+    document.getElementById('guest-count').textContent = '1';
+    setAttending('yes');
+    successWrap.classList.add('hidden');
+    formWrap.classList.remove('hidden');
+    applyLang();
+  });
+
+  // ===== Init =====
+  applyLang();
+  setAttending('yes');
+</script>
+</body>
+</html>
