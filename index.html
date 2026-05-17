@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -64,18 +64,19 @@
     /* ===== Navigation ===== */
     .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background 0.45s ease, padding 0.45s ease, box-shadow 0.45s ease; padding: 1.35rem 0; background: transparent; }
     .navbar.scrolled { background: rgba(235, 228, 216, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 4px 24px rgba(10, 9, 8, 0.08); padding: 0.7rem 0; }
-    .nav-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; }
-    .nav-monogram { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245, 240, 232, 0.95); transition: color 0.35s ease; }
+    .nav-inner { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .nav-monogram { flex-shrink: 0; font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245, 240, 232, 0.95); transition: color 0.35s ease; }
     .nav-monogram .amp { font-family: var(--font-script); font-size: 1.75rem; color: var(--color-gold-bright); margin: 0 0.2rem; letter-spacing: 0; text-transform: none; vertical-align: -0.05em; font-weight: 400; }
     .navbar.scrolled .nav-monogram { color: var(--color-ink); letter-spacing: 0.18em; }
     .navbar.scrolled .nav-monogram .amp { color: var(--color-rose); }
+    .nav-end { display: flex; align-items: center; gap: 0.65rem; flex-shrink: 0; margin-left: auto; }
     .nav-links { display: none; align-items: center; gap: 2rem; }
     .nav-link { font-family: var(--font-ui); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245, 240, 232, 0.88); transition: color 0.25s ease; }
     .nav-link:hover { color: var(--color-gold-bright); }
     .navbar.scrolled .nav-link { color: var(--color-ink-muted); }
     .navbar.scrolled .nav-link:hover { color: var(--color-rose); }
-    .lang-switcher { display: flex; align-items: center; gap: 0.5rem; margin-left: 1rem; padding-left: 1rem; border-left: 1px solid rgba(245, 240, 232, 0.28); transition: border-color 0.35s ease; }
-    .navbar.scrolled .lang-switcher { border-left-color: rgba(20, 18, 16, 0.15); }
+    .lang-switcher { display: flex; align-items: center; gap: 0.35rem; margin: 0; padding: 0; border-left: none; transition: border-color 0.35s ease; }
+    .navbar.scrolled .lang-switcher { border-left: none; }
     .lang-btn { font-family: var(--font-ui); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; padding: 0.3rem 0.55rem; border-radius: 0.15rem; transition: all 0.25s; color: rgba(245, 240, 232, 0.75); border: 1px solid transparent; }
     .lang-btn:hover { color: var(--color-cream); }
     .lang-btn.active { background: rgba(212, 175, 55, 0.22); color: #faf8f3; border-color: rgba(212, 175, 55, 0.45); }
@@ -87,12 +88,12 @@
     .mobile-menu { display: none; background: var(--color-parchment); border-top: 1px solid rgba(20, 18, 16, 0.08); padding: 1rem 1.5rem; box-shadow: 0 12px 40px rgba(10, 9, 8, 0.12); }
     .mobile-menu.open { display: block; animation: fadeIn 0.35s ease-out; }
     .mobile-link { display: block; padding: 0.55rem 0; font-family: var(--font-ui); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.75rem; color: var(--color-ink-muted); }
-    .mobile-lang-row { display: flex; gap: 0.5rem; padding-top: 0.75rem; margin-top: 0.75rem; border-top: 1px solid rgba(20, 18, 16, 0.08); }
-    .lang-btn-mobile { font-family: var(--font-ui); font-size: 0.65rem; letter-spacing: 0.1em; padding: 0.35rem 0.85rem; border-radius: 0.15rem; background: var(--color-cream-deep); color: var(--color-ink-muted); }
-    .lang-btn-mobile.active { background: var(--color-ink); color: var(--color-cream); }
 
     @media (min-width: 768px) {
+      .nav-end { gap: 0; }
       .nav-links { display: flex; }
+      .lang-switcher { gap: 0.5rem; margin-left: 1rem; padding-left: 1rem; border-left: 1px solid rgba(245, 240, 232, 0.28); }
+      .navbar.scrolled .lang-switcher { border-left-color: rgba(20, 18, 16, 0.15); }
       .menu-toggle { display: none; }
       .mobile-menu { display: none !important; }
     }
@@ -356,21 +357,23 @@
 <nav id="navbar" class="navbar">
   <div class="nav-inner">
     <div class="nav-monogram">T <span class="amp">&</span> H</div>
-    <div class="nav-links">
-      <a href="#story" class="nav-link" data-key="story">Our Story</a>
-      <a href="#schedule" class="nav-link" data-key="schedule">Schedule</a>
-      <a href="#venue" class="nav-link" data-key="venue">Venue</a>
-      <a href="#gallery" class="nav-link" data-key="gallery">Gallery</a>
-      <a href="#rsvp" class="nav-link" data-key="rsvp">RSVP</a>
-      <div class="lang-switcher">
-        <button data-lang="en" class="lang-btn active">EN</button>
-        <button data-lang="vi" class="lang-btn">VI</button>
+    <div class="nav-end">
+      <div class="nav-links">
+        <a href="#story" class="nav-link" data-key="story">Our Story</a>
+        <a href="#schedule" class="nav-link" data-key="schedule">Schedule</a>
+        <a href="#venue" class="nav-link" data-key="venue">Venue</a>
+        <a href="#gallery" class="nav-link" data-key="gallery">Gallery</a>
+        <a href="#rsvp" class="nav-link" data-key="rsvp">RSVP</a>
       </div>
+      <div class="lang-switcher">
+        <button type="button" data-lang="en" class="lang-btn">EN</button>
+        <button type="button" data-lang="vi" class="lang-btn active">VI</button>
+      </div>
+      <button type="button" id="menu-toggle" class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-    <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
-      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
   </div>
   <div id="mobile-menu" class="mobile-menu">
     <a href="#story" class="mobile-link" data-key="story">Our Story</a>
@@ -378,10 +381,6 @@
     <a href="#venue" class="mobile-link" data-key="venue">Venue</a>
     <a href="#gallery" class="mobile-link" data-key="gallery">Gallery</a>
     <a href="#rsvp" class="mobile-link" data-key="rsvp">RSVP</a>
-    <div class="mobile-lang-row">
-      <button data-lang="en" class="lang-btn-mobile active">EN</button>
-      <button data-lang="vi" class="lang-btn-mobile">VI</button>
-    </div>
   </div>
 </nav>
 
@@ -392,8 +391,8 @@
   <div class="hero-blob-2"></div>
 
   <div class="hero-inner fade-up">
-    <p id="hero-together" class="hero-together">Together with their families</p>
-    <p id="hero-invite" class="hero-invite">request the pleasure of your company at the celebration of their wedding</p>
+    <p id="hero-together" class="hero-together">Together with our families,</p>
+    <p id="hero-invite" class="hero-invite">we request the pleasure of your company at our wedding celebration.</p>
 
     <div class="hero-names">
       <h1 class="hero-name">Tuân</h1>
@@ -639,8 +638,8 @@ And we chose to walk this journey side by side.</p>
     en: {
       nav: { story: 'Our Story', schedule: 'Schedule', venue: 'Venue', gallery: 'Gallery', rsvp: 'RSVP' },
       hero: {
-        together: 'Together with their families',
-        invite: 'request the pleasure of your company at the celebration of their wedding',
+        together: 'Together with our families,',
+        invite: 'we request the pleasure of your company at our wedding celebration.',
         scroll: 'Scroll to explore',
         countdown: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' },
       },
@@ -706,8 +705,8 @@ And we chose to walk this journey side by side.</p>
     vi: {
       nav: { story: 'Câu Chuyện', schedule: 'Chương Trình', venue: 'Địa Điểm', gallery: 'Album', rsvp: 'Xác Nhận' },
       hero: {
-        together: 'Cùng gia đình hai bên',
-        invite: 'trân trọng kính mời quý khách đến chung vui trong ngày lễ thành hôn',
+        together: 'Cùng gia đình hai bên,',
+        invite: 'chúng mình trân trọng kính mời quý khách đến chung vui trong ngày cưới của chúng mình.',
         scroll: 'Cuộn xuống',
         countdown: { days: 'Ngày', hours: 'Giờ', minutes: 'Phút', seconds: 'Giây' },
       },
@@ -772,7 +771,7 @@ And we chose to walk this journey side by side.</p>
     },
   };
 
-  const state = { lang: 'en', attending: 'yes', guests: 1 };
+  const state = { lang: 'vi', attending: 'yes', guests: 1 };
   const WEDDING_DATE = new Date('2026-07-04T18:00:00+07:00');
 
   // ===== Apply language =====
@@ -855,13 +854,10 @@ And we chose to walk this journey side by side.</p>
   }
 
   // ===== Language buttons =====
-  document.querySelectorAll('.lang-btn, .lang-btn-mobile').forEach(btn => {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       state.lang = btn.dataset.lang;
       document.querySelectorAll('.lang-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.lang === state.lang);
-      });
-      document.querySelectorAll('.lang-btn-mobile').forEach(b => {
         b.classList.toggle('active', b.dataset.lang === state.lang);
       });
       applyLang();
@@ -875,12 +871,14 @@ And we chose to walk this journey side by side.</p>
   const iconClose = document.getElementById('menu-icon-close');
   menuToggle.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     iconOpen.classList.toggle('hidden', isOpen);
     iconClose.classList.toggle('hidden', !isOpen);
   });
   document.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
       iconOpen.classList.remove('hidden');
       iconClose.classList.add('hidden');
     });
