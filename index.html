@@ -502,7 +502,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
   <div class="lightbox-inner">
-    <img id="lightbox-img" src="" alt="" />
+    <img id="lightbox-img" alt="" />
   </div>
 </div>
 
@@ -888,7 +888,6 @@
 
   lightboxClose.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
   lightboxBackdrop.addEventListener('click', closeLightbox);
-  lightbox.querySelector('.lightbox-inner').addEventListener('click', e => e.stopPropagation());
 
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightbox();
