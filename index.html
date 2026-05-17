@@ -209,7 +209,7 @@
     /* ===== Our Story ===== */
     #story { background: var(--color-cream); position: relative; }
     #story::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: var(--grain); opacity: 0.4; mix-blend-mode: multiply; }
-    .story-body { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; font-style: italic; color: var(--color-ink-muted); line-height: 1.75; margin-top: 2rem; position: relative; z-index: 1; }
+    .story-body { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 400; font-style: italic; color: var(--color-ink-muted); line-height: 1.75; margin-top: 2rem; position: relative; z-index: 1; white-space: pre-line; }
 
     @media (min-width: 768px) {
       .story-body { font-size: 1.45rem; max-width: 36rem; margin-left: auto; margin-right: auto; }
@@ -438,7 +438,11 @@
     <p id="story-sub" class="section-script">How it all began</p>
     <h2 id="story-title" class="section-title">Our Story</h2>
     <div class="ornament ornament-sm" style="margin-bottom: 2rem;"></div>
-    <p id="story-body" class="story-body">We met when we least expected it. Though we are different in many ways, we found comfort, laughter, and love in each other. And we chose to walk this journey side by side</p>
+    <p id="story-body" class="story-body">We met when we least expected it.
+
+Though we are different in many ways, we found comfort, laughter, and love in each other.
+
+And we chose to walk this journey side by side.</p>
   </div>
 </section>
 
@@ -643,7 +647,7 @@
       story: {
         title: 'Our Story',
         subtitle: 'How it all began',
-        body: 'From a chance encounter to a lifetime promise — every moment has led us here. We can\'t wait to share this day with the people we love most.',
+        body: 'We met when we least expected it.\n\nThough we are different in many ways, we found comfort, laughter, and love in each other.\n\nAnd we chose to walk this journey side by side.',
       },
       schedule: {
         title: 'Wedding Ceremony',
@@ -710,7 +714,7 @@
       story: {
         title: 'Câu Chuyện Của Chúng Mình',
         subtitle: 'Tất cả bắt đầu thế nào',
-        body: 'Từ một cuộc gặp gỡ tình cờ đến lời hứa trọn đời — mỗi khoảnh khắc đã dẫn chúng mình đến đây. Chúng mình rất mong được chia sẻ ngày trọng đại này cùng những người thân yêu nhất.',
+        body: 'Chúng mình gặp nhau đúng vào lúc không ai ngờ tới.\n\nDù khác nhau trên nhiều phương diện, chúng mình vẫn tìm thấy sự bình yên, tiếng cười và tình yêu nơi nhau.\n\nVà chúng mình đã chọn cùng nhau bước đi sát vai trên hành trình này.',
       },
       schedule: {
         title: 'Lễ Cưới',
