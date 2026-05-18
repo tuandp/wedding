@@ -306,6 +306,12 @@
     .lightbox-close { position: fixed; top: 1rem; right: 1rem; z-index: 2; width: 2.75rem; height: 2.75rem; border-radius: 0.15rem; background: rgba(255, 255, 255, 0.1); color: #fafaf9; display: flex; align-items: center; justify-content: center; transition: background 0.25s ease; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.12); }
     .lightbox-close:hover { background: rgba(212, 175, 55, 0.25); }
     .lightbox-close:focus-visible { outline: 2px solid var(--color-gold-bright); outline-offset: 3px; }
+    .lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 2; width: 2.75rem; height: 2.75rem; border-radius: 999px; background: rgba(255, 255, 255, 0.1); color: #fafaf9; display: flex; align-items: center; justify-content: center; transition: background 0.25s ease; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.12); cursor: pointer; }
+    .lightbox-nav:hover { background: rgba(212, 175, 55, 0.25); }
+    .lightbox-nav:focus-visible { outline: 2px solid var(--color-gold-bright); outline-offset: 3px; }
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+    .lightbox-inner img { touch-action: pan-y; user-select: none; -webkit-user-drag: none; }
 
     @media (min-width: 768px) {
       .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 1.15rem; }
@@ -662,6 +668,12 @@ And we chose to walk this journey side by side.</p>
   <div class="lightbox-backdrop" id="lightbox-backdrop" tabindex="-1" aria-hidden="true"></div>
   <button type="button" id="lightbox-close" class="lightbox-close" aria-label="Close">
     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <button type="button" id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Previous">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button type="button" id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Next">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
   <div class="lightbox-inner">
     <img id="lightbox-img" alt="" />
@@ -1034,12 +1046,23 @@ And we chose to walk this journey side by side.</p>
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.getElementById('lightbox-close');
   const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const galleryImgs = Array.from(document.querySelectorAll('.gallery-tile img'));
   let lightboxReturnFocus = null;
+  let lightboxIndex = 0;
 
-  function openLightbox(src) {
-    lightboxReturnFocus = document.activeElement;
-    lightboxImg.src = src;
+  function showAt(i) {
+    const n = galleryImgs.length;
+    lightboxIndex = (i + n) % n;
+    const img = galleryImgs[lightboxIndex];
+    lightboxImg.src = img.currentSrc || img.src;
     lightboxImg.alt = '';
+  }
+
+  function openLightbox(i) {
+    lightboxReturnFocus = document.activeElement;
+    showAt(i);
     lightbox.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
     lightboxClose.focus();
@@ -1055,20 +1078,41 @@ And we chose to walk this journey side by side.</p>
     lightboxReturnFocus = null;
   }
 
-  document.querySelectorAll('.gallery-tile').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const img = btn.querySelector('img');
-      if (img && img.currentSrc) openLightbox(img.currentSrc);
-      else if (img && img.src) openLightbox(img.src);
-    });
+  document.querySelectorAll('.gallery-tile').forEach((btn, i) => {
+    btn.addEventListener('click', () => openLightbox(i));
   });
 
   lightboxClose.addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
   lightboxBackdrop.addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', e => { e.stopPropagation(); showAt(lightboxIndex - 1); });
+  lightboxNext.addEventListener('click', e => { e.stopPropagation(); showAt(lightboxIndex + 1); });
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) closeLightbox();
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') showAt(lightboxIndex - 1);
+    else if (e.key === 'ArrowRight') showAt(lightboxIndex + 1);
   });
+
+  // Touch swipe
+  let touchStartX = 0, touchStartY = 0, touchActive = false;
+  lightbox.addEventListener('touchstart', e => {
+    if (e.touches.length !== 1) return;
+    touchActive = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', e => {
+    if (!touchActive) return;
+    touchActive = false;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) showAt(lightboxIndex + 1);
+      else showAt(lightboxIndex - 1);
+    }
+  }, { passive: true });
 
   // ===== Init =====
   applyLang();
