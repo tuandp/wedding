@@ -105,7 +105,7 @@
 
     /* ===== Hero (cinematic / letterbox feel) ===== */
     .hero { position: relative; min-height: 100vh; min-height: 100dvh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 100% 85% at 50% -10%, #2a2419 0%, #12100e 42%, var(--color-hero-film) 100%); }
+    .hero-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(10, 9, 8, 0.55), rgba(10, 9, 8, 0.7)), url('images/back-ground.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; }
     .hero-bg::after { content: ''; position: absolute; inset: 0; background: var(--grain); pointer-events: none; mix-blend-mode: overlay; opacity: 0.9; }
     .hero-blob-1 { position: absolute; top: 10%; left: -5%; width: 22rem; height: 22rem; border-radius: 9999px; opacity: 0.09; filter: blur(80px); background: var(--color-gold-bright); }
     .hero-blob-2 { position: absolute; bottom: 5%; right: -10%; width: 28rem; height: 28rem; border-radius: 9999px; opacity: 0.07; filter: blur(90px); background: var(--color-rose-soft); }
