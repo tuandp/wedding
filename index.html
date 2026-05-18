@@ -50,6 +50,7 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes shimmer { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.95; } }
     @keyframes heroTitles { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes countdownIn { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
     @keyframes bounceSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
     .fade-up { animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
     .fade-in { animation: fadeIn 1.8s ease-out forwards; }
@@ -180,23 +181,17 @@
     }
     .hero-date { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: rgba(245, 240, 232, 0.9); margin-bottom: 0.45rem; letter-spacing: 0.32em; text-transform: uppercase; white-space: nowrap; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.65s backwards; }
     .hero-city { font-family: var(--font-ui); font-size: 0.72rem; font-weight: 500; color: rgba(200, 192, 178, 0.85); letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 2.75rem; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.75s backwards; }
-    .countdown { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem 0.35rem; max-width: 26rem; margin: 0 auto 2rem; padding: 1.25rem 0.75rem; border: 1px solid rgba(212, 175, 55, 0.22); background: rgba(10, 9, 8, 0.35); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-radius: 0.25rem; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.85s backwards; }
-    .cd-cell { display: flex; flex-direction: row; align-items: baseline; justify-content: center; gap: 0.3rem; min-width: 0; }
-    .cd-num { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #f7f2ea; line-height: 1; letter-spacing: 0.04em; flex-shrink: 0; }
-    .cd-label { font-family: var(--font-ui); font-size: 0.54rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(192, 184, 170, 0.8); white-space: nowrap; }
+    .countdown { position: absolute; top: 5.25rem; left: 50%; transform: translateX(-50%); z-index: 11; display: flex; align-items: baseline; justify-content: center; gap: 1rem; padding: 0.5rem 0.9rem; background: rgba(10, 9, 8, 0.35); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(212, 175, 55, 0.22); border-radius: 999px; animation: countdownIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.85s backwards; white-space: nowrap; }
+    .cd-cell { display: inline-flex; align-items: baseline; gap: 0.25rem; }
+    .cd-num { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: #f7f2ea; line-height: 1; letter-spacing: 0.04em; }
+    .cd-label { font-family: var(--font-ui); font-size: 0.55rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(210, 202, 188, 0.85); }
 
-    @media (max-width: 400px) {
-      .countdown { padding: 1.1rem 0.4rem; gap: 0.4rem 0.2rem; }
-      .cd-cell { gap: 0.2rem; }
-      .cd-num { font-size: 1.1rem; }
-      .cd-label { font-size: 0.48rem; letter-spacing: 0.06em; }
-    }
     @media (min-width: 768px) {
       .hero-together { font-size: 1.2rem; }
       .hero-invite { font-size: 1.1rem; max-width: 42rem; }
       .hero-date { font-size: 1.15rem; letter-spacing: 0.36em; }
-      .countdown { gap: 0.85rem 1rem; padding: 1.5rem 1.25rem; max-width: 30rem; }
-      .cd-num { font-size: 2.1rem; }
+      .countdown { top: 5.75rem; gap: 1.5rem; padding: 0.6rem 1.25rem; }
+      .cd-num { font-size: 1.1rem; }
       .cd-label { font-size: 0.62rem; letter-spacing: 0.14em; }
       .scroll-hint { bottom: max(1.75rem, calc(env(safe-area-inset-bottom, 0px) + 1rem)); }
     }
@@ -450,24 +445,24 @@
 
     <p class="hero-date">04 · 07 · 2026</p>
     <p class="hero-city">Ho Chi Minh City</p>
+  </div>
 
-    <div class="countdown">
-      <div class="cd-cell">
-        <div id="cd-days" class="cd-num">00</div>
-        <div class="cd-label cd-translate" data-key="days">Days</div>
-      </div>
-      <div class="cd-cell">
-        <div id="cd-hours" class="cd-num">00</div>
-        <div class="cd-label cd-translate" data-key="hours">Hours</div>
-      </div>
-      <div class="cd-cell">
-        <div id="cd-mins" class="cd-num">00</div>
-        <div class="cd-label cd-translate" data-key="minutes">Minutes</div>
-      </div>
-      <div class="cd-cell">
-        <div id="cd-secs" class="cd-num">00</div>
-        <div class="cd-label cd-translate" data-key="seconds">Seconds</div>
-      </div>
+  <div class="countdown">
+    <div class="cd-cell">
+      <div id="cd-days" class="cd-num">00</div>
+      <div class="cd-label cd-translate" data-key="days">Days</div>
+    </div>
+    <div class="cd-cell">
+      <div id="cd-hours" class="cd-num">00</div>
+      <div class="cd-label cd-translate" data-key="hours">Hours</div>
+    </div>
+    <div class="cd-cell">
+      <div id="cd-mins" class="cd-num">00</div>
+      <div class="cd-label cd-translate" data-key="minutes">Minutes</div>
+    </div>
+    <div class="cd-cell">
+      <div id="cd-secs" class="cd-num">00</div>
+      <div class="cd-label cd-translate" data-key="seconds">Seconds</div>
     </div>
   </div>
 
