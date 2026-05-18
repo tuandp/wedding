@@ -50,7 +50,6 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes shimmer { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.95; } }
     @keyframes heroTitles { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes countdownIn { from { opacity: 0; transform: translateX(-50%) translateY(-12px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
     @keyframes bounceSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
     .fade-up { animation: fadeUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
     .fade-in { animation: fadeIn 1.8s ease-out forwards; }
@@ -181,18 +180,11 @@
     }
     .hero-date { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: rgba(245, 240, 232, 0.9); margin-bottom: 0.45rem; letter-spacing: 0.32em; text-transform: uppercase; white-space: nowrap; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.65s backwards; }
     .hero-city { font-family: var(--font-ui); font-size: 0.72rem; font-weight: 500; color: rgba(200, 192, 178, 0.85); letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 2.75rem; animation: heroTitles 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.75s backwards; }
-    .countdown { position: absolute; top: 5.25rem; left: 50%; transform: translateX(-50%); z-index: 11; display: flex; align-items: baseline; justify-content: center; gap: 1rem; padding: 0.5rem 0.9rem; background: rgba(10, 9, 8, 0.35); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border: 1px solid rgba(212, 175, 55, 0.22); border-radius: 999px; animation: countdownIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.85s backwards; white-space: nowrap; }
-    .cd-cell { display: inline-flex; align-items: baseline; gap: 0.25rem; }
-    .cd-num { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: #f7f2ea; line-height: 1; letter-spacing: 0.04em; }
-    .cd-label { font-family: var(--font-ui); font-size: 0.55rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(210, 202, 188, 0.85); }
 
     @media (min-width: 768px) {
       .hero-together { font-size: 1.2rem; }
       .hero-invite { font-size: 1.1rem; max-width: 42rem; }
       .hero-date { font-size: 1.15rem; letter-spacing: 0.36em; }
-      .countdown { top: 5.75rem; gap: 1.5rem; padding: 0.6rem 1.25rem; }
-      .cd-num { font-size: 1.1rem; }
-      .cd-label { font-size: 0.62rem; letter-spacing: 0.14em; }
       .scroll-hint { bottom: max(1.75rem, calc(env(safe-area-inset-bottom, 0px) + 1rem)); }
     }
 
@@ -670,7 +662,6 @@ And we chose to walk this journey side by side.</p>
         together: 'Together with our families,',
         invite: 'we request the pleasure of your company at our wedding celebration.',
         scroll: 'Scroll to explore',
-        countdown: { days: 'Days', hours: 'Hours', minutes: 'Minutes', seconds: 'Seconds' },
       },
       story: {
         title: 'Our Story',
@@ -737,7 +728,6 @@ And we chose to walk this journey side by side.</p>
         together: 'Cùng gia đình hai bên,',
         invite: 'chúng mình trân trọng kính mời quý khách đến chung vui trong ngày cưới của chúng mình.',
         scroll: 'Cuộn xuống',
-        countdown: { days: 'Ngày', hours: 'Giờ', minutes: 'Phút', seconds: 'Giây' },
       },
       story: {
         title: 'Câu Chuyện Của Chúng Mình',
@@ -801,7 +791,6 @@ And we chose to walk this journey side by side.</p>
   };
 
   const state = { lang: 'vi', attending: 'yes', guests: 1 };
-  const WEDDING_DATE = new Date('2026-07-04T18:00:00+07:00');
 
   // ===== Apply language =====
   function applyLang() {
@@ -815,9 +804,6 @@ And we chose to walk this journey side by side.</p>
     document.getElementById('hero-together').textContent = t.hero.together;
     document.getElementById('hero-invite').textContent = t.hero.invite;
     document.getElementById('hero-scroll').textContent = t.hero.scroll;
-    document.querySelectorAll('.cd-translate').forEach(el => {
-      el.textContent = t.hero.countdown[el.dataset.key];
-    });
 
     document.getElementById('story-title').textContent = t.story.title;
     document.getElementById('story-sub').textContent = t.story.subtitle;
